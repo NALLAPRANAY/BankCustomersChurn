@@ -1,7 +1,7 @@
 import os
 import sys
-import pandas 
-import numpy
+import pandas as pd
+import numpy as np
 import pickle
 from src.logger import logging
 from src.exception import CustomException
@@ -23,3 +23,18 @@ def load_obj(filepath):
 
     except Exception as e:
         raise CustomException(e,sys)
+    
+def get_data_as_df(CreditScore, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary):
+    custom_input = {
+        'CreditScore': [CreditScore],
+        'Age': [Age],
+        'Tenure': [Tenure],
+        'Balance': [Balance],
+        'NumOfProducts': [NumOfProducts],
+        'HasCrCard': [HasCrCard],
+        'IsActiveMember': [IsActiveMember],
+        'EstimatedSalary': [EstimatedSalary]
+    }
+
+    df = pd.DataFrame(custom_input)
+    return df
