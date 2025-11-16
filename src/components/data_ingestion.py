@@ -33,8 +33,8 @@ class DataIngestion:
                 self.dataingestion_config.train_data_path,
                 self.dataingestion_config.test_data_path
             )       
-        except:
-            pass
+        except Exception as e:
+            raise CustomException(e,sys)
 if __name__=="__main__":
     obj=DataIngestion()
     obj.initiate_data_ingestion()
