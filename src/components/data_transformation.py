@@ -4,11 +4,11 @@ import pandas as pd
 from dataclasses import dataclass
 from sklearn.preprocessing import StandardScaler
 from sklearn.compose import ColumnTransformer
-from logger import logging
-from exception import CustomException
+from src.logger import logging
+from src.exception import CustomException
 from sklearn.pipeline import Pipeline
 import numpy as np
-from sklearn.utils import save_obj
+from src.utils import save_obj
 @dataclass
 class DataTransformationConfig:
     preprocessor_objfile=os.path.join("artificats","preprocessor.pkl")
@@ -30,16 +30,16 @@ class DataTransformation:
         )
 
         return preprocessor
-    def intiate_data_ingestion(self,train_path,test_path):
+    def intiate_data_transformation(self,train_path,test_path):
         try:
             train_df=pd.read_csv(train_path)
             test_df=pd.read_csv(test_path)
             train_df=train_df.drop(columns=['RowNumber','CustomerId','Surname','Geography','Gender'],axis=1)
             test_df=test_df.drop(columns=['RowNumber','CustomerId','Surname','Geography','Gender'],axis=1)
             logging.info("Removing unwanted columns in both test and train data frmaes")
-            X_train=train_df.drop('Exited')
+            X_train=train_df.drop('Exited',axis=1)
             y_train=train_df['Exited']
-            X_test=test_df.drop('Exited')
+            X_test=test_df.drop('Exited',axis=1)
             y_test=test_df['Exited']
 
             preprocessor_obj=self.get_tramsformstion_obj()
