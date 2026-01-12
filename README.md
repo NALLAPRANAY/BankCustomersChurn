@@ -87,13 +87,13 @@ Key Features Influencing Churn: **CreditScore, Balance, Tenure, IsActiveMember**
 
 ## Requirments
 
-pandas
-numpy
-seaborn
-scikit-learn
-flask
+pandas,
+numpy,
+seaborn,
+scikit-learn,
+flask,
 gunicorn
 
-## Approch
+
 
 
