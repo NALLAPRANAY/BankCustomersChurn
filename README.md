@@ -3,7 +3,7 @@
 
 This dataset is for banks with following columns:
 
-1.customer_id, unused variable.
+1.customer_id, unused variable.<br>
 2.credit_score, used as input.
 3.country, used as input.
 4.gender, used as input.
